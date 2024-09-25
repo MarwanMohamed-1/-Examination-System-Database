@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+ERD ----------> Cycle in branch and track with exam
+
+Stored Procedure ------------> change logic of SubmitAnswer procedure so it use cursor to submit all answers once not submit each answer indvidually 
+
+=======
+ERD ----------> Cycle in branch and track with exam
+
+Stored Procedure ------------> change logic of SubmitAnswer procedure so it use cursor to submit all answers once not submit each answer indvidually 
+
+>>>>>>> f3a03b70d813481ae4d0104822026e29ef0b208a
+Role privilages -------------------> instructor can't create users and also students can't 

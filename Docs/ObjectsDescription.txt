@@ -1,0 +1,295 @@
+<<<<<<< HEAD
+
+
+                                                                     Stored Procedures
+
+ 
+------------------------------------- Question Pool Management ---------------------------------------------------
+
+1. AddQuestionToPool: Adds a new question to the question pool for a specific course. Supports multiple choice, true/false, and text questions.
+
+2. UpdateQuestionInPool: Updates an existing question in the question pool, allowing modifications to the question text and correct answer.
+
+3. DeleteQuestionFromPool: Removes a specific question from the question pool.
+
+4. SelectRandomQuestionsByType: Selects a specified number of questions of each type (multiple choice, true/false, text) randomly from the question pool for an exam.
+
+5. SelectManualQuestions: Allows an instructor to manually select specific questions from the question pool for an exam.
+
+----------------------------------------- Course Management -------------------------------------------------------
+
+1. AddCourse: Adds a new course with details like course name, description, maximum degree, and minimum degree.
+
+2. UpdateCourse: Updates the details of an existing course.
+
+3. DeleteCourse: Deletes an existing course from the system.
+
+-------------------------------------------Instructor Management ---------------------------------------------------
+
+1. AddInstructor: Adds a new instructor to the system with relevant details.
+
+2. UpdateInstructor: Updates the details of an existing instructor.
+
+3. DeleteInstructor: Deletes an instructor from the system.
+
+4. AssignInstructorToCourse: Assigns an instructor to teach a specific course.
+
+5. RemoveInstructorFromCourse: Removes an instructor from a course they are assigned to.
+
+-------------------------------------- Branch, Track, and Intake Management -------------------------------------------
+
+1. AddBranch: Adds a new branch (department) to the system.
+
+2. AddTrack: Adds a new track (specialization) within a branch.
+
+3. AddIntake: Adds a new intake (batch of students) for a specific year.
+
+-------------------------------------------- Student Management -------------------------------------------------------
+
+1. AddStudent: Adds a new student to the system with personal details, intake, branch, and track.
+
+2. UpdateStudent: Updates the details of an existing student.
+
+3. DeleteStudent: Deletes a student from the system.
+
+4. AssignStudentToCourse: Assigns a student to a specific course.
+
+--------------------------------------------- Exam Management ----------------------------------------------------------
+
+1. CreateExam: Creates a new exam for a specific course, including type, intake, branch, track, start time, end time, and total time.
+
+2. AddQuestionToExam: Adds questions to an existing exam, either selected manually or randomly.
+
+3. AssignStudentsToExam: Assigns students to a specific exam, allowing them to take the exam at the scheduled time.
+
+4. DefineExamDetails: Defines the details of an exam, such as date, start time, end time.
+
+5. SubmitStudentAnswer: Submits a student's answer for a specific exam question and stores it in the system.
+
+6. CalculateExamResults: Calculates the results of an exam based on the stored answers, evaluating multiple choice and true/false questions automatically and text questions manually.
+
+----------------------------------------------- Account Management ----------------------------------------------------
+
+1. CreateUserAccount: Creates a new user account in the system with login credentials.
+
+2. CreateCompleteUser: Creates a complete user profile, including personal details and associated roles.
+
+CreateLoginAndUser: Creates a new login and user in the system, typically used for database-level authentication.
+
+
+                                         
+
+
+
+                                                   Views 
+
+
+
+
+
+
+
+A) Tables View:
+----------------
+1) CourseView: Display all Course Table's Columns 
+
+2) InstructorView: Display all Intructor Table's Columns 
+
+3) StudentView: Display Student Table's Columns 
+
+4) BranchView: Display all Branch Table's Columns 
+
+5) TrackView: Display all Track Table's Columns 
+
+6) DepartmentView: Display all Department Table's Columns 
+
+7) IntakeView: Display all Intake Table's Columns 
+
+8) MultipleChoiceOptionView: Display all MultipleChoiceOption Table's Columns 
+
+9) ExamView: Display all Exam Table's Columns 
+
+10) StudentAnswerView: Display all StudentAnswer Table's Columns 
+
+11) UsersView: Display all Users Table's Columns 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+B) Relation Views:
+-------------------
+1) InstructorCoursesView: Display one Table that contains columns from ( Instructor, InstructorCourses, Course ) to Display some info about the instructor and his courses
+
+2) StudentCoursesView: Display one Table that contains columns from ( Student, StudentCourses, Course ) to Display some info about the student and his courses and the enrollment date
+
+3) ExamResultsView: Display one Table that contains columns from ( StudentExams, Student, Exam) to Display some info about student and his score in the exam 
+
+4) CourseDetailsView: Display one Table that contains columns from ( Course, InstructorCourses, Instructor, StudentCourses, Student) to Display all the info about the class and it's instructor and the students who enrolled it
+
+5) QuestionPoolView: Display one Table that contains columns from ( QuestionPool, Course ) to Display all the question pool of each class 
+
+6) StudentExamDetailsView: Display one Table that contains columns from ( StudentExams, Student, Exam, StudentAnswer, QuestionPool ) to Display the exam questions and it's mark and the "IsCorrect" flag for each student 
+
+
+
+
+										Triggers
+
+1)trg_EnsureExamTime   		:  This trigger will prevent students from submitting answers outside the designated exam time window.
+
+2)trg_UpdateFinalScore 		:  This trigger will update the StudentExams table with the total score whenever a student answer is inserted.
+
+3)trg_UniqueUsername   		:  This trigger ensures that no two users can have the same username
+
+4)trg_EnsureUniqueEnrollment	:  This trigger will prevent a student from being enrolled in the same course more than once.
+
+5)trg_PreventInstructorDeletionWithAssignedCourses: Trigger to Prevent Deleting Instructors Assigned to Courses
+=======
+
+
+                                                                     Stored Procedures
+
+ 
+------------------------------------- Question Pool Management ---------------------------------------------------
+
+1. AddQuestionToPool: Adds a new question to the question pool for a specific course. Supports multiple choice, true/false, and text questions.
+
+2. UpdateQuestionInPool: Updates an existing question in the question pool, allowing modifications to the question text and correct answer.
+
+3. DeleteQuestionFromPool: Removes a specific question from the question pool.
+
+4. SelectRandomQuestionsByType: Selects a specified number of questions of each type (multiple choice, true/false, text) randomly from the question pool for an exam.
+
+5. SelectManualQuestions: Allows an instructor to manually select specific questions from the question pool for an exam.
+
+----------------------------------------- Course Management -------------------------------------------------------
+
+1. AddCourse: Adds a new course with details like course name, description, maximum degree, and minimum degree.
+
+2. UpdateCourse: Updates the details of an existing course.
+
+3. DeleteCourse: Deletes an existing course from the system.
+
+-------------------------------------------Instructor Management ---------------------------------------------------
+
+1. AddInstructor: Adds a new instructor to the system with relevant details.
+
+2. UpdateInstructor: Updates the details of an existing instructor.
+
+3. DeleteInstructor: Deletes an instructor from the system.
+
+4. AssignInstructorToCourse: Assigns an instructor to teach a specific course.
+
+5. RemoveInstructorFromCourse: Removes an instructor from a course they are assigned to.
+
+-------------------------------------- Branch, Track, and Intake Management -------------------------------------------
+
+1. AddBranch: Adds a new branch (department) to the system.
+
+2. AddTrack: Adds a new track (specialization) within a branch.
+
+3. AddIntake: Adds a new intake (batch of students) for a specific year.
+
+-------------------------------------------- Student Management -------------------------------------------------------
+
+1. AddStudent: Adds a new student to the system with personal details, intake, branch, and track.
+
+2. UpdateStudent: Updates the details of an existing student.
+
+3. DeleteStudent: Deletes a student from the system.
+
+4. AssignStudentToCourse: Assigns a student to a specific course.
+
+--------------------------------------------- Exam Management ----------------------------------------------------------
+
+1. CreateExam: Creates a new exam for a specific course, including type, intake, branch, track, start time, end time, and total time.
+
+2. AddQuestionToExam: Adds questions to an existing exam, either selected manually or randomly.
+
+3. AssignStudentsToExam: Assigns students to a specific exam, allowing them to take the exam at the scheduled time.
+
+4. DefineExamDetails: Defines the details of an exam, such as date, start time, end time.
+
+5. SubmitStudentAnswer: Submits a student's answer for a specific exam question and stores it in the system.
+
+6. CalculateExamResults: Calculates the results of an exam based on the stored answers, evaluating multiple choice and true/false questions automatically and text questions manually.
+
+----------------------------------------------- Account Management ----------------------------------------------------
+
+1. CreateUserAccount: Creates a new user account in the system with login credentials.
+
+2. CreateCompleteUser: Creates a complete user profile, including personal details and associated roles.
+
+CreateLoginAndUser: Creates a new login and user in the system, typically used for database-level authentication.
+
+
+                                         
+
+
+
+                                                   Views 
+
+
+
+
+
+
+
+A) Tables View:
+----------------
+1) CourseView: Display all Course Table's Columns 
+
+2) InstructorView: Display all Intructor Table's Columns 
+
+3) StudentView: Display Student Table's Columns 
+
+4) BranchView: Display all Branch Table's Columns 
+
+5) TrackView: Display all Track Table's Columns 
+
+6) DepartmentView: Display all Department Table's Columns 
+
+7) IntakeView: Display all Intake Table's Columns 
+
+8) MultipleChoiceOptionView: Display all MultipleChoiceOption Table's Columns 
+
+9) ExamView: Display all Exam Table's Columns 
+
+10) StudentAnswerView: Display all StudentAnswer Table's Columns 
+
+11) UsersView: Display all Users Table's Columns 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+B) Relation Views:
+-------------------
+1) InstructorCoursesView: Display one Table that contains columns from ( Instructor, InstructorCourses, Course ) to Display some info about the instructor and his courses
+
+2) StudentCoursesView: Display one Table that contains columns from ( Student, StudentCourses, Course ) to Display some info about the student and his courses and the enrollment date
+
+3) ExamResultsView: Display one Table that contains columns from ( StudentExams, Student, Exam) to Display some info about student and his score in the exam 
+
+4) CourseDetailsView: Display one Table that contains columns from ( Course, InstructorCourses, Instructor, StudentCourses, Student) to Display all the info about the class and it's instructor and the students who enrolled it
+
+5) QuestionPoolView: Display one Table that contains columns from ( QuestionPool, Course ) to Display all the question pool of each class 
+
+6) StudentExamDetailsView: Display one Table that contains columns from ( StudentExams, Student, Exam, StudentAnswer, QuestionPool ) to Display the exam questions and it's mark and the "IsCorrect" flag for each student 
+
+
+
+
+										Triggers
+
+1)trg_EnsureExamTime   		:  This trigger will prevent students from submitting answers outside the designated exam time window.
+
+2)trg_UpdateFinalScore 		:  This trigger will update the StudentExams table with the total score whenever a student answer is inserted.
+
+3)trg_UniqueUsername   		:  This trigger ensures that no two users can have the same username
+
+4)trg_EnsureUniqueEnrollment	:  This trigger will prevent a student from being enrolled in the same course more than once.
+
+5)trg_PreventInstructorDeletionWithAssignedCourses: Trigger to Prevent Deleting Instructors Assigned to Courses
+>>>>>>> f3a03b70d813481ae4d0104822026e29ef0b208a

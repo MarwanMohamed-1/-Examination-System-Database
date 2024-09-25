@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+
+1.  UserAccount : admin_account                          password : Admin123!
+
+2.  UserAccount : training_manager_account               password : TrainingManager123!
+
+3.  UserAccount : instructor_account                     password : Instructor123!
+
+4.  UserAccount : student_account                        password : Student123!
+
+=======
+
+1.  UserAccount : admin_account                          password : Admin123!
+
+2.  UserAccount : training_manager_account               password : TrainingManager123!
+
+3.  UserAccount : instructor_account                     password : Instructor123!
+
+4.  UserAccount : student_account                        password : Student123!
+
+>>>>>>> f3a03b70d813481ae4d0104822026e29ef0b208a
